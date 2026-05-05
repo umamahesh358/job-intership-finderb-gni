@@ -24,7 +24,7 @@ async function run() {
         const rolesRes = await client.post('http://localhost:3000/api/v1/suggest-roles');
         console.log("Role Suggestions:", rolesRes.data);
 
-        console.log("4. Match Jobs");
+        console.log("4. Match Jobs (With provided jobs)");
         const jobsRes = await client.post('http://localhost:3000/api/v1/match-jobs', {
             jobs: [
                 {
@@ -38,6 +38,12 @@ async function run() {
             ]
         });
         console.log("Job Matches:", jobsRes.data);
+
+        console.log("5. Match Jobs (Using JobSpy)");
+        const spyRes = await client.post('http://localhost:3000/api/v1/match-jobs', {
+            jobs: [] // empty array forces jobspy to trigger
+        });
+        console.log("Job Matches (JobSpy):", spyRes.data);
     } catch (e) {
         console.error("Test failed:", e.response ? e.response.data : e.message);
     }
