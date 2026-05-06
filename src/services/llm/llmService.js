@@ -50,6 +50,23 @@ const callLLM = async (prompt, systemPrompt, format = "json") => {
         ]);
     }
 
+    if (prompt.includes('Analyze this job description against the user\'s resume')) {
+        return JSON.stringify({
+          "resume_tailoring": {
+            "template_recommendation": "Modern Tech Template",
+            "ats_score": 75,
+            "keyword_gaps": ["TypeScript", "GraphQL", "CI/CD"],
+            "suggested_edits": [
+              {
+                 "original": "Built frontend using React.",
+                 "improved": "Architected responsive frontend interfaces utilizing React and modern hooks, increasing user engagement.",
+                 "reason": "Includes stronger action verbs and highlights impact."
+              }
+            ]
+          }
+        });
+    }
+
     return JSON.stringify({ error: "Unknown prompt type" });
 };
 

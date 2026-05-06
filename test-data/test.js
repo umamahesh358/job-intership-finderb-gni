@@ -44,6 +44,13 @@ async function run() {
             jobs: [] // empty array forces jobspy to trigger
         });
         console.log("Job Matches (JobSpy):", spyRes.data);
+
+        console.log("6. Tailor Resume (V2)");
+        const tailorRes = await client.post('http://localhost:3000/api/v2/tailor-resume', {
+            job_description: "We are looking for a highly skilled React developer with experience in Node.js and TypeScript."
+        });
+        console.log("Tailor Resume Result:", tailorRes.data);
+
     } catch (e) {
         console.error("Test failed:", e.response ? e.response.data : e.message);
     }

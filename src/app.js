@@ -21,6 +21,7 @@ app.use(session({
 
 const authRoutes = require('./routes/auth');
 const v1Routes = require('./routes/api/v1');
+const v2Routes = require('./routes/api/v2');
 
 // Basic route
 app.get('/', (req, res) => {
@@ -29,5 +30,6 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authRoutes);
 app.use('/api/v1', v1Routes);
+app.use('/api/v2', v2Routes);
 
 module.exports = app;
